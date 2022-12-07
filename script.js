@@ -129,3 +129,122 @@
 //     return true;
 //   } else return false;
 // };
+
+// var minimumTotal = function (triangle) {
+//   let total = 0;
+//   let min = 0;
+//   let c;
+//   for (let a = 0; a < triangle.length; a++) {
+//     for (let b = 0; b < triangle[a].length; b++) {
+//       c = triangle[a];
+//     }
+//     min = Math.min.apply(Math, c);
+//     total = total + min;
+//   }
+//   return total;
+// };
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// var plusOne = function (digits) {
+//   let current = "";
+//   for (let a = 0; a < digits.length; a++) {
+//     current = current + String(digits[a]);
+//   }
+//   let valuetonumber = Number(current);
+//   valuetonumber = valuetonumber + 1;
+//   let valuetoarray = String(valuetonumber).split("");
+
+//   return valuetoarray;
+// };
+///////////////////////////////////////////////////////////////////////////
+///Coding challenge 2 Arrays
+//////////////////////////////////////////////////////////////////////////////
+// let total = [];
+// let calcttip = function (bill) {
+//   let tip = 0;
+//   if (bill >= 50 && bill <= 300) {
+//     tip = bill * 0.15;
+//     total.push(bill + tip);
+//   } else {
+//     tip = bill * 0.2;
+//     total.push(bill + tip);
+//   }
+//   return tip;
+// };
+
+// let tips = [calcttip(125), calcttip(55), calcttip(44)];
+// console.log(tips, total);
+/////////////////////////////////////////////////
+/////////////OBJECT EXERCISE  .this, store fubction in object
+// let alvin = {
+//   name: "alvin",
+//   license: false,
+//   age: 12,
+//   job: "hacker",
+//   summary: function () {
+//     return `${this.name} is a ${this.age} years old ${this.job}. and ${
+//       this.license ? "can" : "cannot"
+//     } drive`;
+//   },
+// };
+
+// console.log(alvin.summary());
+
+/////////////////////////////////////
+// CODING CHALENGE BMI CALCULATOR , object , method
+// let bmi = function (heigth, weigth) {
+//   return weigth / (heigth * heigth);
+// };
+
+// let jp = {
+//   weight: 78,
+//   heigth: 1.69,
+//   fullname: "jp ebsolo",
+//   bmi: function () {
+//     return bmi(this.heigth, this.weight);
+//   },
+// };
+// let canoy = {
+//   weight: 92,
+//   heigth: 1.95,
+//   fullname: "javier ebsolo",
+//   bmi: function () {
+//     return bmi(this.heigth, this.weight);
+//   },
+// };
+
+// console.log(
+//   `${jp.fullname} BMI: (${jp.bmi().toFixed(2)}) is ${
+//     jp.bmi() > canoy.bmi() ? "higher" : "lower"
+//   } than ${canoy.fullname} BMI: (${canoy.bmi().toFixed(2)}) !`
+// );
+////////////////////////////////////
+//coding cahllenge 4 , funtion, loop , arrays, conditions
+////////////////////////////////
+// let bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 10];
+// let tips = [];
+// let total = [];
+
+// let calcttip = function (bill) {
+//   let tip = 0;
+//   if (bill >= 50 && bill <= 300) {
+//     tip = bill * 0.15;
+//     total.push(bill + tip);
+//   } else {
+//     tip = bill * 0.2;
+//     total.push(bill + tip);
+//   }
+//   return tip;
+// };
+
+// for (let a = 0; a < bills.length; a++) {
+//   tips.push(calcttip(bills[a]));
+// }
+// let ave = function (total) {
+//   let ave = 0;
+//   for (a = 0; a < bills.length; a++) {
+//     ave = ave + total[a];
+//   }
+//   return ave;
+// };
+
+// console.log(tips, total, ave(total));
