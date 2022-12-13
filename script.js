@@ -248,3 +248,59 @@
 // };
 
 // console.log(tips, total, ave(total));
+
+///////////////////////////////////////////////////
+///Coding challenge #1
+////////////////////////////////////////
+let secret = Math.trunc(Math.random() * 20 + 1);
+let score = 20;
+let high = 0;
+
+document.querySelector(".check").addEventListener("click", function () {
+  const guess = Number(document.querySelector(".guess").value);
+  if (!guess) {
+    document.querySelector(".message").textContent = "No input";
+  } else if (guess === secret) {
+    document.querySelector(".message").textContent = "Correct Answer!!!";
+    document.querySelector("body").style.backgroundColor = "#4BB543";
+    document.querySelector(".number").style.width = "30rem";
+    document.querySelector(".number").textContent = secret;
+    if (high < score) {
+      high = score;
+      document.querySelector(".highscore").textContent = high;
+    }
+    funcHigh();
+  } else if (guess < secret) {
+    document.querySelector(".message").textContent = "Too low";
+    score--;
+    funcHigh();
+    limit();
+  } else if (guess > secret) {
+    document.querySelector(".message").textContent = "Too high";
+    score--;
+    funcHigh();
+    limit();
+  }
+});
+
+document.querySelector(".again").addEventListener("click", function () {
+  secret = Math.trunc(Math.random() * 20 + 1);
+
+  document.querySelector(".message").textContent = "Start Guessing...";
+  document.querySelector(".guess").value = "";
+  document.querySelector("body").style.backgroundColor = "#000000";
+  document.querySelector(".number").textContent = "?";
+  document.querySelector(".score").textContent = "20";
+  score = 20;
+  document.querySelector(".number").textContent = "?";
+  document.querySelector(".number").style.width = "15rem";
+});
+
+let funcHigh = function () {
+  document.querySelector(".score").textContent = score;
+};
+let limit = function () {
+  if (score <= 0) {
+    document.querySelector(".message").textContent = "Game Over Loser!!!!";
+  }
+};
