@@ -175,6 +175,7 @@
 // console.log(tips, total);
 /////////////////////////////////////////////////
 /////////////OBJECT EXERCISE  .this, store fubction in object
+
 // let alvin = {
 //   name: "alvin",
 //   license: false,
@@ -252,55 +253,323 @@
 ///////////////////////////////////////////////////
 ///Coding challenge #1
 ////////////////////////////////////////
-let secret = Math.trunc(Math.random() * 20 + 1);
-let score = 20;
-let high = 0;
+// let secret = Math.trunc(Math.random() * 20 + 1);
+// let score = 20;
+// let high = 0;
 
-document.querySelector(".check").addEventListener("click", function () {
-  const guess = Number(document.querySelector(".guess").value);
-  if (!guess) {
-    document.querySelector(".message").textContent = "No input";
-  } else if (guess === secret) {
-    document.querySelector(".message").textContent = "Correct Answer!!!";
-    document.querySelector("body").style.backgroundColor = "#4BB543";
-    document.querySelector(".number").style.width = "30rem";
-    document.querySelector(".number").textContent = secret;
-    if (high < score) {
-      high = score;
-      document.querySelector(".highscore").textContent = high;
-    }
-    funcHigh();
-  } else if (guess < secret) {
-    document.querySelector(".message").textContent = "Too low";
-    score--;
-    funcHigh();
-    limit();
-  } else if (guess > secret) {
-    document.querySelector(".message").textContent = "Too high";
-    score--;
-    funcHigh();
-    limit();
+// document.querySelector(".check").addEventListener("click", function () {
+//   const guess = Number(document.querySelector(".guess").value);
+//   if (!guess) {
+//     document.querySelector(".message").textContent = "No input";
+//   } else if (guess === secret) {
+//     document.querySelector(".message").textContent = "Correct Answer!!!";
+//     document.querySelector("body").style.backgroundColor = "#4BB543";
+//     document.querySelector(".number").style.width = "30rem";
+//     document.querySelector(".number").textContent = secret;
+//     if (high < score) {
+//       high = score;
+//       document.querySelector(".highscore").textContent = high;
+//     }
+//     funcHigh();
+//   } else if (guess < secret) {
+//     document.querySelector(".message").textContent = "Too low";
+//     score--;
+//     funcHigh();
+//     limit();
+//   } else if (guess > secret) {
+//     document.querySelector(".message").textContent = "Too high";
+//     score--;
+//     funcHigh();
+//     limit();
+//   }
+// });
+
+// document.querySelector(".again").addEventListener("click", function () {
+//   secret = Math.trunc(Math.random() * 20 + 1);
+
+//   document.querySelector(".message").textContent = "Start Guessing...";
+//   document.querySelector(".guess").value = "";
+//   document.querySelector("body").style.backgroundColor = "#000000";
+//   document.querySelector(".number").textContent = "?";
+//   document.querySelector(".score").textContent = "20";
+//   score = 20;
+//   document.querySelector(".number").textContent = "?";
+//   document.querySelector(".number").style.width = "15rem";
+// });
+
+// let funcHigh = function () {
+//   document.querySelector(".score").textContent = score;
+// };
+// let limit = function () {
+//   if (score <= 0) {
+//     document.querySelector(".message").textContent = "Game Over Loser!!!!";
+//   }
+// };
+
+///////////////////////////////////////
+///Coding Challenge 2
+///////////////////////////////
+
+// let jp = [3, 5, 2, 12, 7];
+// let canoy = [4, 1, 15, 8, 3];
+
+// const checkDogs = function (sub1, sub2) {
+//   jpthedog = sub2.slice(1, -2);
+//   sub1.concat(jpthedog).forEach(function (dog, i) {
+//     const type = dog >= 3 ? "adult" : "puppy";
+//     console.log(`Dog number ${i + 1} is a ${type}, and ${dog} years old.`);
+//   });
+// };
+
+// checkDogs(canoy, jp);
+
+///////////////////////////////////////////////////////////
+//// Array , objects, foreach , insertAdjecentHTML
+//////////////////////////////////////////////////////////
+
+// const account1 = {
+//   owner: "Jonas Schmedtmann",
+//   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+//   interestRate: 1.2, // %
+//   pin: 1111,
+// };
+
+// const account2 = {
+//   owner: "Jessica Davis",
+//   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+//   interestRate: 1.5,
+//   pin: 2222,
+// };
+
+// const account3 = {
+//   owner: "Steven Thomas Williams",
+//   movements: [200, -200, 340, -300, -20, 50, 400, -460],
+//   interestRate: 0.7,
+//   pin: 3333,
+// };
+
+// const account4 = {
+//   owner: "Sarah Smith",
+//   movements: [430, 1000, 700, 50, 90],
+//   interestRate: 1,
+//   pin: 4444,
+// };
+
+// const accounts = [account1, account2, account3, account4];
+
+// // Elements
+// const labelWelcome = document.querySelector(".welcome");
+// const labelDate = document.querySelector(".date");
+// const labelBalance = document.querySelector(".balance__value");
+// const labelSumIn = document.querySelector(".summary__value--in");
+// const labelSumOut = document.querySelector(".summary__value--out");
+// const labelSumInterest = document.querySelector(".summary__value--interest");
+// const labelTimer = document.querySelector(".timer");
+
+// const containerApp = document.querySelector(".app");
+// const containerMovements = document.querySelector(".movements");
+
+// const btnLogin = document.querySelector(".login__btn");
+// const btnTransfer = document.querySelector(".form__btn--transfer");
+// const btnLoan = document.querySelector(".form__btn--loan");
+// const btnClose = document.querySelector(".form__btn--close");
+// const btnSort = document.querySelector(".btn--sort");
+
+// const inputLoginUsername = document.querySelector(".login__input--user");
+// const inputLoginPin = document.querySelector(".login__input--pin");
+// const inputTransferTo = document.querySelector(".form__input--to");
+// const inputTransferAmount = document.querySelector(".form__input--amount");
+// const inputLoanAmount = document.querySelector(".form__input--loan-amount");
+// const inputCloseUsername = document.querySelector(".form__input--user");
+// const inputClosePin = document.querySelector(".form__input--pin");
+
+// const display = function (mov) {
+//   containerMovements.innerHTML = "";
+//   mov.forEach(function (mov, i) {
+//     const type = mov > 0 ? "withdrawal" : "deposit";
+//     const insert = `
+//     <div class="movements">
+//     <div class="movements__row">
+//       <div class="movements__type movements__type--${type}">${i} ${type}</div>
+//       <div class="movements__value">${mov}</div>
+//     </div>
+//     `;
+
+//     containerMovements.insertAdjacentHTML("afterbegin", insert);
+//   });
+// };
+
+// display(account1.movements);
+// var searchInsert = function (nums, target) {
+//   for (let a = 0; a < nums.length; a++) {
+//     if (nums[a] >= target) {
+//       nums.push(target);
+//       return a;
+//     }
+//   }
+// };
+
+/////////////////////////////
+//coding challenge 2
+/////////////////////////////
+//  Create a function calculateAvaragetoHumanAge that acepts ararys of dog ages and does the following....
+//
+//  1. Calculate the dog age into human years using the following formula
+//      if dog is < 2yrs , human age  = 2 * dogAge. else human age = 16 + dogAge * 4
+//  2. Exclude dogs that areless than 18 yrs old
+//  3. Calculate the average of all the human age
+//  4. run the function
+
+// const calculateAveragetoHumanAge = function (data) {
+//   const toHumanAge = data.map(function (dogAge) {
+//     if (dogAge > 2) {
+//       return dogAge + 16 * 4;
+//     } else return dogAge * 2;
+//   });
+
+//   const adult = toHumanAge.filter(function (age) {
+//     return age > 18;
+//   });
+
+//   const average =
+//     adult.reduce(function (acc, i) {
+//       return acc + i;
+//     }, 0) / adult.length;
+
+//   console.log(adult);
+//   console.log(average);
+// };
+// find
+// let jp = function (dog) {
+//   dog.forEach(function (dog) {
+//     if (dog.owner === "alvin") {
+//       return console.log(
+//         `Alvin's Dog is eating ${
+//           jpDog.currentFood < jpDog.recommendFood ? "too little" : "too much"
+//         }`
+//       );
+//     } else {
+//       return "no owners name";
+//     }
+//   });
+// };
+// find algo
+// let bayot = [];
+// dogs.forEach(function (dogs) {
+//   if (dogs.owner === "JP") {
+//     return bayot.push(dogs);
+//   }
+// });
+
+//map, filter
+// let too = [];
+// let eat = function (dog) {
+//   dog.forEach(function (data) {
+//     if (data.recommendFood > data.currentFood) {
+//       too.push(data.owner);
+//     }
+//   });
+// };
+
+////CODING CHALLENGE NUMBER 4
+
+/*
+  Julia and Kate are still studying about dogs, 
+  this time they are studying about 
+  dogs if the dog is eating too much or little. 
+  eating too much is eating larger portion of recomended food and little is opposite.
+
+
+1. Loop over the array containing dog object, and for each dog,
+ Calculate the recomended portion and add it to the 
+object as a new property. Do not create a new array . formula: recomendfood = weight ** 0.75 * 28.
+
+2. Find the JP's dog,  and log to the console wheter its eating too much or too little
+
+3. Create an array containing all owners of dogs who is eating too much or too little. 
+
+4. Create a shallow copy of dogs array and sort it by recomended dog portion in an assending order. 
+*/
+
+let dogs = [
+  {
+    owner: "javier",
+    weight: 8,
+    currentFood: 200,
+  },
+  {
+    owner: "JP",
+    weight: 22,
+    currentFood: 250,
+  },
+  {
+    owner: "alvin",
+    weight: 13,
+    currentFood: 300,
+  },
+  {
+    owner: "john",
+    weight: 13,
+    currentFood: 210,
+  },
+];
+
+let dogs2 = [
+  {
+    owner: "javier",
+    weight: 8,
+    currentFood: 200,
+  },
+  {
+    owner: "alvin",
+    weight: 13,
+    currentFood: 300,
+  },
+  {
+    owner: "john",
+    weight: 13,
+    currentFood: 210,
+  },
+];
+
+setRecommendFood(dogs);
+setRecommendFood(dogs2);
+
+///--1--
+// dogs.forEach(function (dog) {
+//   dog.recommendFood = Math.trunc(dog.weight ** 0.75 * 28);
+// });
+
+function setRecommendFood(list) {
+  list.forEach(function (item) {
+    item.recommendFood = Math.trunc(item.weight ** 0.75 * 28);
+  });
+}
+
+///--2--
+let jpDog = dogs.find(function (dog) {
+  if (dog.owner === "JP") {
+    return dog;
   }
 });
 
-document.querySelector(".again").addEventListener("click", function () {
-  secret = Math.trunc(Math.random() * 20 + 1);
+console.log(
+  `JP's Dog is eating ${
+    jpDog.currentFood < jpDog.recommendFood ? "too little" : "too much"
+  }`
+);
+// /--3--
 
-  document.querySelector(".message").textContent = "Start Guessing...";
-  document.querySelector(".guess").value = "";
-  document.querySelector("body").style.backgroundColor = "#000000";
-  document.querySelector(".number").textContent = "?";
-  document.querySelector(".score").textContent = "20";
-  score = 20;
-  document.querySelector(".number").textContent = "?";
-  document.querySelector(".number").style.width = "15rem";
-});
+let eatingTooMuch = dogs
+  .filter((dog) => dog.recommendFood < dog.currentFood)
+  .map((dog) => dog.owner);
 
-let funcHigh = function () {
-  document.querySelector(".score").textContent = score;
-};
-let limit = function () {
-  if (score <= 0) {
-    document.querySelector(".message").textContent = "Game Over Loser!!!!";
-  }
-};
+let eatingTooLittle = dogs
+  .filter((dog) => dog.recommendFood > dog.currentFood)
+  .map((dog) => dog.owner);
+///---4---
+
+// let dogSorted = dogs.slice().sort((a, b) => {
+//   return a.recommendFood - b.recommendFood;
+// });
+// -
