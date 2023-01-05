@@ -491,85 +491,128 @@ object as a new property. Do not create a new array . formula: recomendfood = we
 4. Create a shallow copy of dogs array and sort it by recomended dog portion in an assending order. 
 */
 
-let dogs = [
-  {
-    owner: "javier",
-    weight: 8,
-    currentFood: 200,
-  },
-  {
-    owner: "JP",
-    weight: 22,
-    currentFood: 250,
-  },
-  {
-    owner: "alvin",
-    weight: 13,
-    currentFood: 300,
-  },
-  {
-    owner: "john",
-    weight: 13,
-    currentFood: 210,
-  },
-];
+// let dogs = [
+//   {
+//     owner: "javier",
+//     weight: 8,
+//     currentFood: 200,
+//   },
+//   {
+//     owner: "JP",
+//     weight: 22,
+//     currentFood: 250,
+//   },
+//   {
+//     owner: "alvin",
+//     weight: 13,
+//     currentFood: 300,
+//   },
+//   {
+//     owner: "john",
+//     weight: 13,
+//     currentFood: 210,
+//   },
+// ];
 
-let dogs2 = [
-  {
-    owner: "javier",
-    weight: 8,
-    currentFood: 200,
-  },
-  {
-    owner: "alvin",
-    weight: 13,
-    currentFood: 300,
-  },
-  {
-    owner: "john",
-    weight: 13,
-    currentFood: 210,
-  },
-];
+// let dogs2 = [
+//   {
+//     owner: "javier",
+//     weight: 8,
+//     currentFood: 200,
+//   },
+//   {
+//     owner: "alvin",
+//     weight: 13,
+//     currentFood: 300,
+//   },
+//   {
+//     owner: "john",
+//     weight: 13,
+//     currentFood: 210,
+//   },
+// ];
 
-setRecommendFood(dogs);
-setRecommendFood(dogs2);
+// setRecommendFood(dogs);
+// setRecommendFood(dogs2);
 
 ///--1--
 // dogs.forEach(function (dog) {
 //   dog.recommendFood = Math.trunc(dog.weight ** 0.75 * 28);
 // });
 
-function setRecommendFood(list) {
-  list.forEach(function (item) {
-    item.recommendFood = Math.trunc(item.weight ** 0.75 * 28);
-  });
-}
+// function setRecommendFood(list) {
+//   list.forEach(function (item) {
+//     item.recommendFood = Math.trunc(item.weight ** 0.75 * 28);
+//   });
+// }
 
 ///--2--
-let jpDog = dogs.find(function (dog) {
-  if (dog.owner === "JP") {
-    return dog;
-  }
-});
+// let jpDog = dogs.find(function (dog) {
+//   if (dog.owner === "JP") {
+//     return dog;
+//   }
+// });
 
-console.log(
-  `JP's Dog is eating ${
-    jpDog.currentFood < jpDog.recommendFood ? "too little" : "too much"
-  }`
-);
+// console.log(
+//   `JP's Dog is eating ${
+//     jpDog.currentFood < jpDog.recommendFood ? "too little" : "too much"
+//   }`
+// );
 // /--3--
 
-let eatingTooMuch = dogs
-  .filter((dog) => dog.recommendFood < dog.currentFood)
-  .map((dog) => dog.owner);
+// let eatingTooMuch = dogs
+//   .filter((dog) => dog.recommendFood < dog.currentFood)
+//   .map((dog) => dog.owner);
 
-let eatingTooLittle = dogs
-  .filter((dog) => dog.recommendFood > dog.currentFood)
-  .map((dog) => dog.owner);
+// let eatingTooLittle = dogs
+//   .filter((dog) => dog.recommendFood > dog.currentFood)
+//   .map((dog) => dog.owner);
 ///---4---
 
 // let dogSorted = dogs.slice().sort((a, b) => {
 //   return a.recommendFood - b.recommendFood;
 // });
 // -
+
+
+//////////////////////////////////////////////////////////
+/////asynchrous javascript///////////////////
+////////////////////////////////////////////
+
+loadScript();
+
+async function loadScript() {
+  const ol = document.querySelector("ol");
+
+  const comments = await getPosts(4);
+
+  for (let i = 0; i <= comments.length - 1; i++) {
+    generateListItem(comments[i].email, comments[i].body, comments[i].name);
+  }
+
+  function generateListItem(postTitle, postBody, author) {
+    const li = document.createElement("li");
+    const h3 = document.createElement("h3");
+    const p = document.createElement("p");
+    const code = document.createElement("code");
+    const button = document.createElement("button");
+
+    h3.innerHTML = postTitle;
+    p.innerHTML = postBody;
+    code.innerHTML = author;
+    button.innerHTML = "Delete";
+
+    li.appendChild(h3);
+    li.appendChild(p);
+    li.appendChild(code);
+    li.appendChild(button);
+
+    ol.appendChild(li);
+  }
+}
+
+async function getPosts(number) {
+  return fetch(`https://jsonplaceholder.typicode.com/comments?postId=${number}`)
+    .then((response) => response.json())
+    .then((json) => json);
+}
